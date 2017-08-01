@@ -9,3 +9,7 @@ A Go regular expression editor.
 go build regolar.go
 ./regolar
 ```
+Server is running on 8080
+
+## License
+MIT
