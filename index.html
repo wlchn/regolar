@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <title>Regolar - A Go regular expression editor</title>
+  </meta>
+  <link rel="shortcut icon" href="../static/img/r.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+  <link href="static/css/regolar.css?v=1" rel="stylesheet" media="screen">
+
+  <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <script src="static/js/regolar.js?v=1"></script>
+</head>
+
+<body>
+  <div class="bg-top teal">
+    <div class="basic-container">
+      <div class="web-title">Regolar</div>
+      <div class="web-description">A Go regular expression editor</div>
+    </div>
+  </div>
+  <div class="bg-body blue-grey lighten-5">
+  </div>
+  <div class="main-container basic-container">
+    <div class="main-panel card-panel">
+      <div class="row">
+        <div class="col s12">
+          <div class="input-field">
+            <input id="regexp" type="text">
+            <label for="regexp">Your regular expression</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <div class="input-field">
+            <textarea id="test-string" class="materialize-textarea"></textarea>
+            <label for="test-string">Your test string</label>
+          </div>
+          <p>
+            <input type="checkbox" class="filled-in" id="find-all" checked="checked" />
+            <label for="find-all">Find All</label>
+          </p>
+          <a class="waves-effect waves-light btn" id="clear">clear</a>
+        </div>
+        <div class="main-right col s6">
+          <div>Match result</div>
+          <div id="match-result" class="card-panel teal lighten-5">
+          </div>
+          <div>Match groups</div>
+          <div class="card-panel teal lighten-5">
+            <table id="match-groups">
+              <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Match</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-ref row">
+    <div class="quick-title">Regex quick reference</div>
+    <div class="col s4">
+      <table>
+        <tbody>
+          <tr>
+            <td><code>[abc]</code></td>
+            <td>A single character of: a, b or c</td>
+          </tr>
+          <tr>
+            <td><code>[^abc]</code></td>
+            <td>Any single character except: a, b, or c</td>
+          </tr>
+          <tr>
+            <td><code>[a-z]</code></td>
+            <td>Any single character in the range a-z</td>
+          </tr>
+          <tr>
+            <td><code>[a-zA-Z]</code></td>
+            <td>Any single character in the range a-z or A-Z</td>
+          </tr>
+          <tr>
+            <td><code>^</code></td>
+            <td>Start of line</td>
+          </tr>
+          <tr>
+            <td><code>$</code></td>
+            <td>End of line</td>
+          </tr>
+          <tr>
+            <td><code>\A</code></td>
+            <td>Start of string</td>
+          </tr>
+          <tr>
+            <td><code>\z</code></td>
+            <td>End of string</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col s4">
+      <table>
+        <tbody>
+          <tr>
+            <td><code>.</code></td>
+            <td>Any single character</td>
+          </tr>
+          <tr>
+            <td><code>\s</code></td>
+            <td>Any whitespace character</td>
+          </tr>
+          <tr>
+            <td><code>\S</code></td>
+            <td>Any non-whitespace character</td>
+          </tr>
+          <tr>
+            <td><code>\d</code></td>
+            <td>Any digit</td>
+          </tr>
+          <tr>
+            <td><code>\D</code></td>
+            <td>Any non-digit</td>
+          </tr>
+          <tr>
+            <td><code>\w</code></td>
+            <td>Any word character (letter, number, underscore)</td>
+          </tr>
+          <tr>
+            <td><code>\W</code></td>
+            <td>Any non-word character</td>
+          </tr>
+          <tr>
+            <td><code>\b</code></td>
+            <td>Any word boundary</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col s4">
+      <table>
+        <tbody>
+          <tr>
+            <td><code>(...)</code></td>
+            <td>Capture everything enclosed</td>
+          </tr>
+          <tr>
+            <td><code>(a|b)</code></td>
+            <td>a or b</td>
+          </tr>
+          <tr>
+            <td><code>a?</code></td>
+            <td>Zero or one of a</td>
+          </tr>
+          <tr>
+            <td><code>a*</code></td>
+            <td>Zero or more of a</td>
+          </tr>
+          <tr>
+            <td><code>a+</code></td>
+            <td>One or more of a</td>
+          </tr>
+          <tr>
+            <td><code>a{3}</code></td>
+            <td>Exactly 3 of a</td>
+          </tr>
+          <tr>
+            <td><code>a{3,}</code></td>
+            <td>3 or more of a</td>
+          </tr>
+          <tr>
+            <td><code>a{3,6}</code></td>
+            <td>Between 3 and 6 of a</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="marginer"></div>
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="basic-container">
+      © 2017 Copyright Regolar
+      <a class="grey-text text-lighten-4 right" href="https://github.com/wlchn/regolar" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
