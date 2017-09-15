@@ -9,7 +9,13 @@ A Go regular expression editor.
 go build regolar.go
 ./regolar
 ```
-Server is running on 8080
+Or, you can build and run in Docker:
+``` shell
+docker build -t regolar .
+
+docker run -p 8080:8080 regolar
+```
+Server is running at 8080
 
 ## License
 MIT
