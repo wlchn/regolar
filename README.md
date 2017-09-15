@@ -12,7 +12,6 @@ go build regolar.go
 Or, you can build and run in Docker:
 ``` shell
 docker build -t regolar .
-
 docker run -p 8080:8080 regolar
 ```
 Server is running at 8080
