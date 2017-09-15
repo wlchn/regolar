@@ -10,11 +10,6 @@ You can build the project in Go directly.
 go build regolar.go
 ./regolar
 ```
-Also, you can build and run in Docker:
-``` shell
-docker build -t regolar .
-docker run -p 8080:8080 regolar
-```
 Or, you can use `docker run` and run the project on any machine with this command:
 ``` shell
 docker run -p 8080:8080 wlchn/regolar:latest
