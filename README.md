@@ -12,7 +12,7 @@ go build regolar.go
 ```
 Or, you can use `docker run` and run the project on any machine with this command:
 ``` shell
-docker run -p 8080:8080 wlchn/regolar:latest
+docker run -t -p 8080:8080 wlchn/regolar:latest
 ```
 Docker will pull it from the repository .
 
