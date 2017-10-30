@@ -69,7 +69,7 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	log.Printf("Server is running on 8080")
+	log.Printf("Server is running at 8080")
 
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
