@@ -1,5 +1,5 @@
 # Regolar
-A Go regular expression editor. You can access at <a href="http://regolar.org" target="_blank">regolar.org</a>
+A Go regular expression editor. You can access at <a href="http://39.106.11.1:8080/" target="_blank">Regolar</a>
 
 <img src="./demo1.png">
 <img src="./demo2.png">
