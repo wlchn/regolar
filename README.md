@@ -1,5 +1,5 @@
 # Regolar
-A Go regular expression editor. Inspire by Rubular.com, a ruby regex editor. You can access Regolar at <a href="https://regolar.wanglei.io/" target="_blank">Regolar</a>
+A Go regular expression editor. Inspired by Rubular.com, a ruby regex editor. You can access Regolar at <a href="https://regolar.wanglei.io/" target="_blank">Regolar</a>
 
 <img src="./demo1.png">
 <img src="./demo2.png">
