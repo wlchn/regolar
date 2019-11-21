@@ -1,10 +1,13 @@
 FROM golang:1.13 AS builder
 COPY . /app
 WORKDIR /app
-RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" regolar.go
+RUN useradd appuser
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" regolar.go
 
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+FROM scratch
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app /app/
 WORKDIR /app
+USER appuser
+ENTRYPOINT [ "/app/regolar" ]
