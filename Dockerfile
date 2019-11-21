@@ -10,4 +10,4 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app /app/
 WORKDIR /app
 USER appuser
-ENTRYPOINT [ "/app/regolar" ]
+CMD [ "/app/regolar" ]

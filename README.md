@@ -15,7 +15,7 @@ go build regolar.go
 ```
 Or, you can use `docker run` and run the project on any machine with this command:
 ``` shell
-docker run -t -p 8080:8080 wlchn/regolar /app/regolar
+docker run -t -p 8080:8080 wlchn/regolar
 ```
 Docker will pull it from the repository.
 
