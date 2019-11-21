@@ -1,7 +1,7 @@
 FROM golang:1.13 AS builder
 COPY . /app
 WORKDIR /app
-RUN useradd appuser
+RUN groupadd -r appuser && useradd --no-log-init -r -g appuser appuser
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" regolar.go
 
 FROM scratch
